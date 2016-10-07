@@ -23,38 +23,39 @@ Para una vista general de los temas tocados, referir a [el script de la charla](
 - Aprender las mejores prácticas para escribir tests :-)
 
 ## Inicio rápido
-1. Clonar el proyecto localmente
-```
-$ git clone https://github.com/rodrigojv/spring-test-workshop
-```
 
+1. Clonar el proyecto localmente. No vale espiar la carpeta 'complete'
+
+    ```
+    $ git clone https://github.com/rodrigojv/spring-test-workshop
+	$ cd spring-test-workshop/initial
+    ```
 2. Ejecutar el proyecto: 
-```
-$ cd spring-test-workshop/initial
-$ mvn spring-boot:run
-```
-
+    
+    ```
+    $ mvn spring-boot:run
+    ```
 3. Acceder a: 
-```
-http://localhost:8080/users
-```
-
+    
+    ```
+    http://localhost:8080/users
+    ```
 4. Correr los tests:
    * Detener el servidor levantado en paso anterior `ctrl+c`.
    * Ejecutar los tests con Maven
-   ```
-   $ mvn test
-   ```   
-   * Como resultado deben haber 20/20 tests fallidos. La idea es hacerlos pasar todos durante el workshop.. Wohoo! :D
-   ```
-    Tests run: 20, Failures: 20, Errors: 0, Skipped: 0
-
-    [INFO] ------------------------------------------------------------------------
-    [INFO] BUILD FAILURE
-    [INFO] ------------------------------------------------------------------------
    
-   ```
+        ```
+        $ mvn test
+        ```   
+   * Como resultado deben haber 20/20 tests fallidos. La idea es hacerlos pasar todos durante el workshop.. Wohoo! :D
+   
+        ```
+        Tests run: 20, Failures: 20, Errors: 0, Skipped: 0
 
+        [INFO] --------------------------------------
+        [INFO] BUILD FAILURE
+        [INFO] --------------------------------------
+        ```
 5. Importar el proyecto `spring-test-workshop/initial` como proyecto Maven al IDE para empezar a trabajar  
 
 ## Referencias
