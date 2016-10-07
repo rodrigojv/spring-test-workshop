@@ -27,15 +27,18 @@ Para una vista general de los temas tocados, referir a [el script de la charla](
 ```
 $ git clone https://github.com/rodrigojv/spring-test-workshop
 ```
+
 2. Ejecutar el proyecto: 
 ```
 $ cd spring-test-workshop/initial
 $ mvn spring-boot:run
 ```
+
 3. Acceder a: 
 ```
 http://localhost:8080/users
 ```
+
 4. Correr los tests:
    * Detener el servidor levantado en paso anterior `ctrl+c`.
    * Ejecutar los tests con Maven
@@ -51,6 +54,7 @@ http://localhost:8080/users
     [INFO] ------------------------------------------------------------------------
    
    ```
+
 5. Importar el proyecto `spring-test-workshop/initial` como proyecto Maven al IDE para empezar a trabajar  
 
 ## Referencias
