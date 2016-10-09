@@ -31,7 +31,7 @@ Ejecutar los tests desde consola y desde el Eclipse.
 * Mostrar `MovieServiceTest`
 * Implementar `getMovieByTitleShouldReturnMovieAndRating` y explicar lo necesario para poder llamar a `getByTitle`
 * Explicar utilidad de **Framework de Mock**
-* Explicar @Before
+* Explicar `@Before`
 * Explicar por qué se instancia manualmente `MovieService`
 * Explicar anatomia de un buen test con estructura `AAA`
 * Agregar test para pelicula que no existe. Implementar `getNotExistingMovieShouldThrowException`

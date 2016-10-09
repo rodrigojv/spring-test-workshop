@@ -4,7 +4,7 @@ Aplicación de ejemplo para workshop de testing de aplicaciones Java con Spring 
 
 La aplicación permite a un usuario tener un watchlist de películas que tiene ganas de ver.
 
-Para una vista general de los temas tocados, referir a [el script de la charla](script.md) en combinación con [el historial de commits](https://github.com/rodrigojv/spring-test-workshop/commits/master).
+¿Querés seguir este taller desde tu casa? Referir a [esta sección](##pasos-a-seguir).
 
 ## Requisitos
 
@@ -58,6 +58,22 @@ Para una vista general de los temas tocados, referir a [el script de la charla](
         ```
 5. Importar el proyecto `spring-test-workshop/initial` como proyecto Maven al IDE para empezar a trabajar  
 
+## Pasos a seguir
+
+Para un seguir este taller ver lo que pide cada método `@Test` en las clases `*Test.java` de la carpeta
+[initial](initial) de este repositorio.
+
+Luego hacer que pase el test, implementando lo que pide el método y comparar la solución con el resultado final
+en [complete](complete).
+
+También hacer referencia a las [notas](docs/notes.md) sobre preguntas y cuestiones surgidas durante el taller.
+
+Por último se puede referir a mi [copiatini](docs/script.md) para ver el orden de implementación de los tests
+que se siguen durante este taller.
+
+
 ## Referencias
 * Standard para nombramiento de test: http://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
 * AssertJ: http://joel-costigliola.github.io/assertj
+* Patrón para escribir tests "AAA": http://defragdev.com/blog/?p=783
+* ¿Qué es test de regresión? http://stackoverflow.com/questions/3464629/what-does-regression-test-mean
