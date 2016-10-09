@@ -4,7 +4,7 @@ Aplicación de ejemplo para workshop de testing de aplicaciones Java con Spring 
 
 La aplicación permite a un usuario tener un watchlist de películas que tiene ganas de ver.
 
-¿Querés seguir este taller desde tu casa? Referir a [esta sección](##pasos-a-seguir).
+¿Querés seguir este taller desde tu casa? Referir a [esta sección](#pasos-a-seguir).
 
 ## Requisitos
 
@@ -60,11 +60,9 @@ La aplicación permite a un usuario tener un watchlist de películas que tiene g
 
 ## Pasos a seguir
 
-Para un seguir este taller ver lo que pide cada método `@Test` en las clases `*Test.java` de la carpeta
-[initial](initial) de este repositorio.
+Para un seguir este taller ver lo que pide cada método `@Test` en las clases `*Test.java` de la carpeta `initial` de este repositorio.
 
-Luego hacer que pase el test, implementando lo que pide el método y comparar la solución con el resultado final
-en [complete](complete).
+Luego hacer que pase el test, implementando lo que pide el método y comparar la solución con el resultado final en la carpeta `complete`.
 
 También hacer referencia a las [notas](docs/notes.md) sobre preguntas y cuestiones surgidas durante el taller.
 
