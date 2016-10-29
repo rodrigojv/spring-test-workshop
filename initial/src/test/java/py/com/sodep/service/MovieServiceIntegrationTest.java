@@ -9,9 +9,18 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.orm.jpa.EntityScan;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import py.com.sodep.Application;
 import py.com.sodep.entities.Movie;
 import py.com.sodep.enums.ContentRating;
 import py.com.sodep.exceptions.MovieNotFoundException;
@@ -21,7 +30,7 @@ import py.com.sodep.services.MovieServiceImpl;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@DataJpaTest
+@SpringApplicationConfiguration(classes = Application.class)
 public class MovieServiceIntegrationTest {
 
 	private MovieService movieService;
@@ -39,10 +48,12 @@ public class MovieServiceIntegrationTest {
 	
 	@Test
 	public void getMovieByTitleShouldReturnMovieAndRating() {
-		// TODO Implementar
-		// Copiar de MovieServiceTest
-		Assert.fail();
+		Movie movie = movieService.getByTitle("Man of Steel Test");
+		assertThat(movie).isNotNull();
+		assertThat(movie.getTitle()).isEqualTo("Man of Steel Test");
+		assertThat(movie.getRating()).isEqualTo(ContentRating.G);
 	}
+	
 	
 	@Test
 	public void getNotExistingMovieShouldThrowException() {

@@ -27,9 +27,13 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
+import py.com.sodep.Application;
 import py.com.sodep.entities.Movie;
 import py.com.sodep.entities.User;
 import py.com.sodep.enums.ContentRating;
@@ -48,49 +52,54 @@ import py.com.sodep.services.UserServiceImpl;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@DataJpaTest
+@SpringApplicationConfiguration(classes = Application.class)
+@Transactional
 public class UserServiceIntegrationTest {
 
 	// TODO Copiar propiedades de UserServiceTest
+	@Autowired
+	private UserService userService;
 	
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
 
 	@Before
 	public void setup() {
-		// TODO Instanciar userService
 	}
 
 	@Test
 	public void findAllShouldReturnAllUsers() {
-		// TODO Implementar
-		Assert.fail();
+		List<User> users = userService.findAll();
+		assertThat(users).isNotEmpty();
+		assertThat(users).filteredOn(u -> u.getUsername().equals("clarktest")).hasSize(1);
 	}
 
 	@Test
 	public void getUserShouldReturnUserWithUsername() {
-		// TODO Implementar
-		Assert.fail();
-		
+		User user = userService.getUser("clarktest");
+		assertThat(user).isNotNull();
+		assertThat(user).isEqualToComparingOnlyGivenFields(new User("clarktest"), "username");
 	}
 
 	@Test
 	public void getNotExistingUserShouldThrowException() {
-		// TODO Implementar
-		Assert.fail();
+		thrown.expect(UserNameNotFoundException.class);
+		thrown.expectMessage("User with username batman does not exist");
+		userService.getUser("batman");
 	}
 	
 	@Test
 	public void addMovieToUserWatchListShouldReturnUserWithWatchList() {
-		// TODO Implementar
-		Assert.fail();
-		
+		User user = userService.addToWatchList("clarktest", "Man of Steel Test");
+		assertThat(user.getWatchList()).isNotEmpty();
+		assertThat(user.getWatchList()).hasSize(1);
 	}
 
 	@Test
 	public void addPG13MovieToUserUnder13ShouldThrowException() {
-		// TODO Implementar
-		Assert.fail();
+		thrown.expect(UserNotAllowedToWatchException.class);
+		thrown.expectMessage("User with age " + 8 + ", are not allowed to watch movies with rating " + ContentRating.PG_13);
+		userService.addToWatchList("kevintest", "Conjuro Test");
 	}
 	
 	

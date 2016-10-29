@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import py.com.sodep.entities.Movie;
 import py.com.sodep.entities.User;
+import py.com.sodep.exceptions.MovieAlreadyInWatchlistException;
 import py.com.sodep.exceptions.MovieNotFoundException;
 import py.com.sodep.exceptions.UserNameNotFoundException;
 import py.com.sodep.exceptions.UserNotAllowedToWatchException;
@@ -74,6 +75,12 @@ public class UserWatchListController {
 	@ExceptionHandler
 	@ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
 	public  RestResponse handleUserNotAllowedToWatch(UserNotAllowedToWatchException ex) {
+		return new RestResponse(false, ex.getMessage());
+	}
+	
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+	public  RestResponse handleMovieAlreadyInWatchlist(MovieAlreadyInWatchlistException ex) {
 		return new RestResponse(false, ex.getMessage());
 	}
 	

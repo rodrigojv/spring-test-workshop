@@ -45,7 +45,7 @@ public class User {
 	}
 	
 	public User(String username) {
-		// TODO Auto-generated constructor stub
+		this.username = username;
 	}
 
 	public User(String username, String nombre, String apellido, int age) {

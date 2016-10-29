@@ -9,7 +9,7 @@ public interface UserService {
 
 	List<User> findAll();
 
-	void addToWatchList(String username, String movieTitle);
+	User addToWatchList(String username, String movieTitle);
 	
 	List<Movie> getWatchList(String username);
 

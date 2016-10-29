@@ -2,17 +2,21 @@ package py.com.sodep.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import py.com.sodep.entities.Movie;
 import py.com.sodep.entities.User;
+import py.com.sodep.exceptions.MovieAlreadyInWatchlistException;
 import py.com.sodep.exceptions.UserNameNotFoundException;
 import py.com.sodep.exceptions.UserNotAllowedToWatchException;
 import py.com.sodep.repository.UserRepository;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
@@ -33,7 +37,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void addToWatchList(String username, String movieTitle) {
+	public User addToWatchList(String username, String movieTitle) {
 		User user = this.getUser(username);
 		Movie movie = movieService.getByTitle(movieTitle);
 		
@@ -41,8 +45,12 @@ public class UserServiceImpl implements UserService {
 			throw new UserNotAllowedToWatchException(user.getAge(), movie.getRating().value());
 		}
 		
+		if (movieInWatchlist(user.getWatchList(), movie)) {
+			throw new MovieAlreadyInWatchlistException(username, movieTitle);
+		}
+		
 		user.getWatchList().add(movie);
-		userRepo.save(user);
+		return userRepo.save(user);
 	}
 
 	

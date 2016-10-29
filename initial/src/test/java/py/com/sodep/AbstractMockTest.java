@@ -30,7 +30,7 @@ public abstract class AbstractMockTest {
 		return user;
 	}
 
-	private Movie testMovie() {
+	protected Movie testMovie() {
 		return new Movie("Man of Steel", ContentRating.G);
 	}
 

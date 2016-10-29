@@ -89,6 +89,16 @@ public class UserServiceTest extends AbstractMockTest {
 		
 	}
 	
-	
+	@Test
+	public void addMovieTwiceToWatchlistShouldThrowException() {
+		User user = this.testUser();
+		Movie movie = user.getWatchList().get(0);
+		
+		when(userRepo.findByUsername(user.getUsername())).thenReturn(user);
+		when(movieService.getByTitle(movie.getTitle())).thenReturn(movie);
+		thrown.expect(MovieAlreadyInWatchlistException.class);
+		
+		userService.addToWatchList(user.getUsername(), movie.getTitle());
+	}
 	
 }
